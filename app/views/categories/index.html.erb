@@ -3,12 +3,31 @@
 <h1>Categories</h1>
 
 <div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Category Type</th>
+        <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Destroy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.title %></td>
+          <td><%= category.content %></td>
+          <td><%= category.category_type %></td>
+          <td><%= link_to "Show", category, class: "btn btn-primary" %> </td>
+          <td><%= link_to "Edit", edit_category_path(category), class: "btn btn-primary"  %> </td>
+          <td><%= link_to "Destroy", category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"  %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<%= link_to "New post", new_category_path, class: "btn btn-primary ex-2" %>
+<%= link_to "Back to Home", root_path, class: "btn btn-primary ex-2" %>
